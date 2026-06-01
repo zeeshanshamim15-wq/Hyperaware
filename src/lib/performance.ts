@@ -15,8 +15,8 @@ export const isLowEndDevice = () => {
     connection?: { saveData?: boolean; effectiveType?: string };
   };
 
-  const lowMemory = typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4;
-  const lowCpu = typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 4;
+  const lowMemory = typeof nav.deviceMemory === "number" && nav.deviceMemory <= 2;
+  const lowCpu = typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 2;
   const saveData = nav.connection?.saveData === true;
   const slowNetwork = ["slow-2g", "2g", "3g"].includes(nav.connection?.effectiveType ?? "");
   const smallViewport = window.innerWidth <= 900;
