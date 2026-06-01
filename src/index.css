@@ -1941,12 +1941,9 @@
   }
 
   @media (max-width: 767px) {
-    .purple-motion-bg {
-      background:
-        radial-gradient(280px 180px at 76% 6%, hsl(270 95% 76% / 0.48), transparent 66%),
-        radial-gradient(260px 170px at 14% 86%, hsl(262 95% 66% / 0.34), transparent 68%),
-        radial-gradient(240px 150px at 86% 68%, hsl(292 88% 78% / 0.25), transparent 70%),
-        linear-gradient(180deg, hsl(0 0% 100%), hsl(270 100% 99%) 44%, hsl(266 70% 97%)) !important;
+    .purple-motion-bg::before,
+    .purple-motion-bg::after {
+      display: none !important;
     }
 
     .mars-nav > div {
