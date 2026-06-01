@@ -1,0 +1,39 @@
+.shiny-text {
+  display: inline-block;
+  animation-name: shiny-text-sweep;
+  animation-timing-function: linear;
+  background-position: 150% center;
+}
+
+.shiny-text--right {
+  animation-name: shiny-text-sweep-right;
+}
+
+.shiny-text--disabled {
+  animation: none;
+  background-position: 0% center;
+}
+
+.shiny-text--pause-hover:hover {
+  animation-play-state: paused;
+}
+
+@keyframes shiny-text-sweep {
+  0% {
+    background-position: 150% center;
+  }
+  78%,
+  100% {
+    background-position: -50% center;
+  }
+}
+
+@keyframes shiny-text-sweep-right {
+  0% {
+    background-position: -50% center;
+  }
+  78%,
+  100% {
+    background-position: 150% center;
+  }
+}
