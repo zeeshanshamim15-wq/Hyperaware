@@ -75,7 +75,7 @@ const JourneyTimeline = () => {
                   className="journey__marker"
                   initial={liteMotion ? false : { opacity: 0, scale: 0.4 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-15% 0px" }}
+                  viewport={{ once: true, margin: "80px 0px" }}
                   transition={{
                     duration: 0.55,
                     ease: [0.22, 1, 0.36, 1],
@@ -97,7 +97,7 @@ const JourneyTimeline = () => {
                         }
                   }
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-12% 0px" }}
+                  viewport={{ once: true, margin: "80px 0px" }}
                   transition={{
                     duration: 0.7,
                     ease: [0.22, 1, 0.36, 1],

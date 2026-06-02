@@ -15,13 +15,12 @@ export const isLowEndDevice = () => {
     connection?: { saveData?: boolean; effectiveType?: string };
   };
 
-  const lowMemory = typeof nav.deviceMemory === "number" && nav.deviceMemory <= 2;
-  const lowCpu = typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 2;
   const saveData = nav.connection?.saveData === true;
-  const slowNetwork = ["slow-2g", "2g", "3g"].includes(nav.connection?.effectiveType ?? "");
-  const smallViewport = window.innerWidth <= 900;
+  const slowNetwork = ["slow-2g", "2g"].includes(nav.connection?.effectiveType ?? "");
 
-  return prefersReducedMotion() || saveData || slowNetwork || ((smallViewport || isTouchDevice()) && (lowMemory || lowCpu));
+  // Brave and other privacy-centric browsers spoof CPU cores and memory limits to prevent fingerprinting.
+  // We bypass hardware checking to prevent disabling animations on high-end mobile devices.
+  return prefersReducedMotion() || saveData || slowNetwork;
 };
 
 export const shouldUseLiteMotion = () => prefersReducedMotion() || isLowEndDevice();

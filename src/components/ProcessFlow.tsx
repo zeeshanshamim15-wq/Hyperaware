@@ -94,7 +94,7 @@ const ProcessFlow = ({ items = DEFAULT_ITEMS }: ProcessFlowProps) => {
                 className="process-flow__step"
                 initial={liteMotion ? false : { opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10% 0px" }}
+                viewport={{ once: true, margin: "80px 0px" }}
                 transition={{
                   duration: 0.6,
                   delay: i * 0.07,
@@ -134,7 +134,7 @@ const ProcessFlow = ({ items = DEFAULT_ITEMS }: ProcessFlowProps) => {
                 className="process-flow__mobile-step"
                 initial={liteMotion ? false : { opacity: 0, x: 18 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-8% 0px" }}
+                viewport={{ once: true, margin: "80px 0px" }}
                 transition={{
                   duration: 0.55,
                   delay: i * 0.06,

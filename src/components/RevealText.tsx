@@ -96,7 +96,7 @@ const RevealText = ({
   mode = "text",
   className,
   delay = 0,
-  amount = 0.3,
+  amount = 0.15,
   repeat = false,
 }: RevealTextProps) => {
   const [animationCompleted, setAnimationCompleted] = useState(false);
