@@ -22,7 +22,7 @@ export const Footer = () => {
   };
 
   const footerServices = allServices.filter((service) =>
-    ["branding", "social-media", "content-creation", "performance-marketing", "photography"].includes(service.slug),
+    ["branding", "social-media", "content-creation", "performance-marketing", "photo-videography"].includes(service.slug),
   );
 
   if (isMobile) {

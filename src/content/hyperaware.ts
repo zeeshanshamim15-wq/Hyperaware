@@ -135,32 +135,6 @@ export const services = [
     pageCopy:
       "We create photo and video assets for campaign launches, product showcases, lookbooks, reels, and brand moments that need to feel polished and scroll-stopping.",
   },
-  {
-    title: "Photography",
-    slug: "photography",
-    icon: Camera,
-    intro:
-      "Campaign, fashion, lifestyle, product, and ecommerce photography prepared for premium brand use.",
-    detail:
-      "We plan, style, shoot, and prepare photo assets for campaigns, catalogues, ecommerce pages, social media, ads, and brand storytelling.",
-    deliverables: ["Campaign photography", "Fashion shoots", "Lifestyle shoots", "Product photography"],
-    pageTitle: "Photography For Campaigns, Catalogues, Ecommerce, And Brand Stories.",
-    pageCopy:
-      "We create photography systems for brands that need campaign images, product frames, lifestyle content, ecommerce assets, and social-ready galleries.",
-  },
-  {
-    title: "Videography",
-    slug: "videography",
-    icon: Video,
-    intro:
-      "Campaign videos, reels, ads, brand films, and product videos made for digital platforms.",
-    detail:
-      "We produce video assets for launch campaigns, performance ads, reels, brand storytelling, product explainers, and social-first content calendars.",
-    deliverables: ["Campaign videos", "Reels", "Ads", "Brand films"],
-    pageTitle: "Videography For Reels, Ads, Brand Films, And Campaign Launches.",
-    pageCopy:
-      "We create video content for campaigns, reels, ads, brand films, product showcases, and social media systems that need polished motion assets.",
-  },
 ];
 
 export const moreServices = [
@@ -175,18 +149,6 @@ export const moreServices = [
     pageTitle: "Meta Ads Planned Around Creative, Audience, And Conversion.",
     pageCopy:
       "We manage Meta campaigns with testing plans, creative iterations, audience structure, and performance reporting that keeps spend accountable.",
-  },
-  {
-    title: "Google Ads",
-    slug: "google-ads",
-    icon: TrendingUp,
-    intro: "Search and conversion campaigns for high-intent customers.",
-    detail:
-      "We create Google campaigns that capture demand, support ecommerce traffic, and connect landing pages to measurable action.",
-    deliverables: ["Search campaigns", "Conversion tracking", "Landing page checks", "Performance reports"],
-    pageTitle: "Google Ads For Search Demand, Traffic, And Conversions.",
-    pageCopy:
-      "We build Google campaigns around high-intent searches, conversion tracking, landing page quality, and ongoing optimization.",
   },
   {
     title: "E-commerce Platform Management",
@@ -211,18 +173,6 @@ export const moreServices = [
     pageTitle: "Website Design And Development That Makes The Brand Feel Intentional.",
     pageCopy:
       "We build modern websites and landing pages that hold the brand's visual identity, explain the offer clearly, and create a smoother path from visit to inquiry or purchase.",
-  },
-  {
-    title: "Website Development",
-    slug: "website-development",
-    icon: Globe2,
-    intro: "Fast, responsive websites prepared for growth campaigns and SEO.",
-    detail:
-      "We develop landing pages and full websites that keep the brand premium while making inquiry, traffic, and sales journeys easier.",
-    deliverables: ["Responsive builds", "Landing pages", "SEO-ready structure", "Conversion sections"],
-    pageTitle: "Website Development That Keeps The Brand Premium And Easy To Navigate.",
-    pageCopy:
-      "We develop responsive websites and landing pages with strong structure, premium presentation, and clear conversion paths.",
   },
   {
     title: "Brand Strategy",

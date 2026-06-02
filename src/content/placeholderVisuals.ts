@@ -211,24 +211,6 @@ export const serviceVisuals: Record<
     ],
     label: "Photo and video preview",
   },
-  photography: {
-    hero: placeholderVisuals.photography.editorial[1],
-    gallery: [
-      placeholderVisuals.photography.product[0],
-      placeholderVisuals.photography.lifestyle[0],
-      placeholderVisuals.photography.editorial[2],
-    ],
-    label: "Photography preview",
-  },
-  videography: {
-    hero: placeholderVisuals.videography.cameraSetups[1],
-    gallery: [
-      placeholderVisuals.videography.production[1],
-      placeholderVisuals.videography.editingWorkstations[0],
-      placeholderVisuals.videography.cameraSetups[2],
-    ],
-    label: "Video preview",
-  },
   "meta-ads": {
     hero: placeholderVisuals.performanceMarketing.analyticsDashboards[2],
     gallery: [
@@ -237,15 +219,6 @@ export const serviceVisuals: Record<
       placeholderVisuals.socialMedia.campaignPreviews[1],
     ],
     label: "Meta ads preview",
-  },
-  "google-ads": {
-    hero: placeholderVisuals.performanceMarketing.growthCharts[1],
-    gallery: [
-      placeholderVisuals.performanceMarketing.campaignReports[0],
-      placeholderVisuals.performanceMarketing.analyticsDashboards[0],
-      placeholderVisuals.performanceMarketing.growthCharts[0],
-    ],
-    label: "Google ads preview",
   },
   "ecommerce-platform-management": {
     hero: placeholderVisuals.photography.product[1],
@@ -264,15 +237,6 @@ export const serviceVisuals: Record<
       placeholderVisuals.branding.identityBoards[2],
     ],
     label: "Website preview",
-  },
-  "website-development": {
-    hero: placeholderVisuals.branding.identityBoards[2],
-    gallery: [
-      placeholderVisuals.performanceMarketing.analyticsDashboards[1],
-      placeholderVisuals.branding.identityBoards[0],
-      placeholderVisuals.branding.moodboards[0],
-    ],
-    label: "Website development preview",
   },
   "brand-strategy-positioning": {
     hero: placeholderVisuals.branding.moodboards[2],
