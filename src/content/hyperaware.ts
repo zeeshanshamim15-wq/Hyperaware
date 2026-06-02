@@ -309,6 +309,34 @@ export const processSteps = [
   "Scale",
 ];
 
+export const journeyMilestones = [
+  {
+    phase: "Phase 1",
+    title: "Founded",
+    body: "Hyperaware started with a clear goal: make digital growth feel sharper, cleaner and more accountable.",
+  },
+  {
+    phase: "Phase 2",
+    title: "First Brand Wins",
+    body: "Early projects shaped the agency's focus on content, campaign systems, and premium brand presentation.",
+  },
+  {
+    phase: "Phase 3",
+    title: "Production System",
+    body: "Shoot planning, editing, design, and social execution became a connected workflow instead of separate tasks.",
+  },
+  {
+    phase: "Phase 4",
+    title: "Growth Ecosystem",
+    body: "Strategy, creative, websites, ads, SEO and reporting now work together as one brand growth system.",
+  },
+  {
+    phase: "Phase 5",
+    title: "Hyperaware OS",
+    body: "Today Hyperaware operates like a connected digital operating system, helping brands scale with clarity.",
+  },
+];
+
 export const whyHyperaware = [
   "Strategy first approach",
   "Creative built for conversion",
