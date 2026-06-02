@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FadeContent from "@/components/FadeContent";
+import RevealText from "@/components/RevealText";
 import { cn } from "@/lib/utils";
 import { services } from "@/content/hyperaware";
 import { placeholderVisuals } from "@/content/placeholderVisuals";
@@ -320,7 +321,9 @@ const PinnedServicesStory = () => {
         <div className="w-full">
           <p className="hyper-eyebrow text-xs uppercase tracking-widest text-[hsl(266_70%_25%)] opacity-70">Services</p>
           <h2 className="text-2xl font-black mt-2 text-balance leading-tight text-[hsl(266_70%_18%)]">
-            What Hyperaware can build for your brand.
+            <RevealText as="span" mode="heading" className="block hyper-shine-text">
+              What Hyperaware can build for your brand.
+            </RevealText>
           </h2>
         </div>
 
@@ -432,7 +435,9 @@ const PinnedServicesStory = () => {
           <div className="services-story__intro">
             <p className="hyper-eyebrow">Services</p>
             <h2 className="hyper-display mt-5 max-w-4xl text-balance">
-              What Hyperaware can build for your brand.
+              <RevealText as="span" mode="heading" className="block hyper-shine-text">
+                What Hyperaware can build for your brand.
+              </RevealText>
             </h2>
           </div>
 

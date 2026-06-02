@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 import FadeContent from "@/components/FadeContent";
 import RevealText from "@/components/RevealText";
-import ShinyText from "@/components/ShinyText";
 import { shouldUseLiteMotion } from "@/lib/performance";
 
 type SectionFrameProps = {
@@ -44,15 +43,9 @@ const SectionFrame = ({
             )}
             {title && (
               <h1 className="hyper-display mt-5 text-balance">
-                <ShinyText
-                  text={title}
-                  speed={3.6}
-                  delay={1.1}
-                  color="hsl(266 70% 18%)"
-                  shineColor="hsl(188 100% 66%)"
-                  spread={110}
-                  disabled={liteMotion}
-                />
+                <RevealText as="span" mode="heading" className="block hyper-shine-text">
+                  {title}
+                </RevealText>
               </h1>
             )}
           </div>

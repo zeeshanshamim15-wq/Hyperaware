@@ -84,7 +84,7 @@ const Contact = () => {
         ) : (
           <div className="grid min-h-[70svh] items-start gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.82fr)]">
             <div>
-              <RevealText as="h1" mode="heading" className="hyper-display">
+              <RevealText as="h1" mode="heading" className="hyper-display hyper-shine-text">
                 Let&apos;s Build Your Brand Together
               </RevealText>
               <RevealText as="p" mode="heading" className="mt-8 max-w-xl text-2xl font-bold leading-snug">
