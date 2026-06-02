@@ -26,7 +26,7 @@ const ORBIT_SLUGS = [
   "ecommerce-platform-management",
 ] as const;
 
-const ORBIT_RADIUS = 0.42; // fraction of stage width
+const ORBIT_RADIUS = 0.34; // fraction of stage width (~20% tighter)
 const ORBIT_PERIOD_SEC = 90;
 const HOVER_SPEED_FACTOR = 0.18;
 const SPEED_LERP = 4;
@@ -285,9 +285,10 @@ const ServiceOrbit = () => {
             { ["--orbit-diameter" as string]: `${ORBIT_RADIUS * 200}%` } as React.CSSProperties
           }
         >
-          {/* Single subtle orbit path */}
+          {/* Main orbit path + one subtle inner ring */}
           <div className="service-orbit__rings" aria-hidden>
             <span className="service-orbit__orbit-ring" />
+            <span className="service-orbit__orbit-ring service-orbit__orbit-ring--inner" />
           </div>
 
           {/* Connection line from logo to the focused node */}

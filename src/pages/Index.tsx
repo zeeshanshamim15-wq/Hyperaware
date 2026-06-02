@@ -1,21 +1,40 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, Layers3, Palette, Target, X } from "lucide-react";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import BrandLogoCard from "@/components/BrandLogoCard";
+import MetricFlow from "@/components/MetricFlow";
 import PinnedServicesStory from "@/components/PinnedServicesStory";
+import ProcessFlow, { type ProcessFlowItem } from "@/components/ProcessFlow";
 import RevealText from "@/components/RevealText";
 import SectionFrame from "@/components/SectionFrame";
 import {
   brandLogos,
   contact,
   portfolioStories,
-  resultsDashboard,
   whyHyperaware,
 } from "@/content/hyperaware";
 
+const WHY_ICONS = [Target, Palette, Layers3];
+
+const BEFORE_BENEFITS = [
+  "Inconsistent content",
+  "Weak positioning",
+  "Disconnected marketing",
+];
+
+const AFTER_BENEFITS = [
+  "Unified brand system",
+  "Better creative execution",
+  "Growth-focused ecosystem",
+];
+
 const Index = () => {
   const featuredWork = portfolioStories.slice(0, 3);
-  const smallMetrics = resultsDashboard.slice(0, 4);
+
+  const whyJourneyItems: ProcessFlowItem[] = whyHyperaware.slice(0, 3).map((point, i) => ({
+    title: point,
+    icon: WHY_ICONS[i] ?? Target,
+  }));
 
   return (
     <>
@@ -31,7 +50,7 @@ const Index = () => {
           >
             Digital Marketing | Social Media | Content Creation
           </RevealText>
-          <h1 className="text-balance text-[2.45rem] font-light leading-[1.04] tracking-tight min-[360px]:text-5xl md:text-7xl">
+          <h1 className="text-balance text-[2.45rem] font-light leading-[1.1] tracking-tight min-[360px]:text-5xl md:text-7xl pb-2">
             <RevealText as="span" mode="heading" className="block">
               Build Your Brand.
             </RevealText>
@@ -72,15 +91,8 @@ const Index = () => {
 
       <PinnedServicesStory />
 
-      <SectionFrame eyebrow="Why Hyperaware" title="Strategy, creative, and execution under one sharp system." contentClassName="mt-12">
-        <div className="mobile-rail grid gap-4 md:grid-cols-3">
-          {whyHyperaware.slice(0, 3).map((point, index) => (
-            <div key={point} className="hyper-mini-card hyper-mini-card--visual">
-              <span className="hyper-mini-orb">{index + 1}</span>
-              <RevealText as="span" mode="text">{point}</RevealText>
-            </div>
-          ))}
-        </div>
+      <SectionFrame eyebrow="Why Hyperaware" title="Strategy, Creative, And Execution Under One Sharp System" contentClassName="mt-12">
+        <ProcessFlow items={whyJourneyItems} />
       </SectionFrame>
 
       <SectionFrame eyebrow="Clients" title="Brands We Have Worked With">
@@ -94,16 +106,39 @@ const Index = () => {
         </Link>
       </SectionFrame>
 
-      <SectionFrame eyebrow="Featured Work" title="A quick look at campaign-ready creative." contentClassName="mt-12">
-        <div className="mobile-rail grid gap-5 md:grid-cols-3">
-          {featuredWork.map((story) => (
-            <Link key={story.title} to="/work" className="hyper-panel min-h-64 p-7">
-              <RevealText as="h2" mode="heading" className="text-2xl font-semibold">
+      <SectionFrame eyebrow="Featured Work" title="A Quick Look At Campaign-Ready Creative" contentClassName="mt-12">
+        <div className="bento-work">
+          {featuredWork.map((story, index) => (
+            <Link
+              key={story.title}
+              to="/work"
+              className={
+                index === 0
+                  ? "bento-work__card bento-work__card--feature"
+                  : index === 1
+                    ? "bento-work__card bento-work__card--top"
+                    : "bento-work__card bento-work__card--bottom"
+              }
+            >
+              <span className="bento-work__shine" aria-hidden />
+              <span className="bento-work__index">{`0${index + 1}`}</span>
+              <RevealText
+                as="h2"
+                mode="heading"
+                className={
+                  index === 0
+                    ? "bento-work__title bento-work__title--feature"
+                    : "bento-work__title"
+                }
+              >
                 {story.title}
               </RevealText>
-              <RevealText as="p" mode="paragraph" className="mt-4 text-[hsl(266_35%_24%)]/68">
+              <RevealText as="p" mode="paragraph" className="bento-work__copy">
                 {story.summary}
               </RevealText>
+              <span className="bento-work__cta">
+                Explore <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </Link>
           ))}
         </div>
@@ -112,31 +147,42 @@ const Index = () => {
         </Link>
       </SectionFrame>
 
-      <SectionFrame eyebrow="Featured Transformation" title="A preview of what changes after Hyperaware." contentClassName="mt-12">
-        <div className="max-w-3xl">
-          <BeforeAfterSlider label="Creative transformation" before="Inconsistent brand presence" after="Premium conversion-ready system" slotId="homepage-creative-transformation" />
+      <SectionFrame eyebrow="Featured Transformation" title="A Preview Of What Changes After Hyperaware" contentClassName="mt-12">
+        <div className="ba-section">
+          <div className="ba-section__slider max-w-3xl">
+            <BeforeAfterSlider label="Creative transformation" before="Inconsistent brand presence" after="Premium conversion-ready system" slotId="homepage-creative-transformation" />
+          </div>
+          <div className="ba-section__benefits">
+            <div className="ba-section__column ba-section__column--before">
+              <p className="ba-section__column-title">Before</p>
+              {BEFORE_BENEFITS.map((label) => (
+                <span key={label} className="ba-chip ba-chip--before">
+                  <X className="h-3.5 w-3.5" aria-hidden />
+                  {label}
+                </span>
+              ))}
+            </div>
+            <div className="ba-section__column ba-section__column--after">
+              <p className="ba-section__column-title">After</p>
+              {AFTER_BENEFITS.map((label) => (
+                <span key={label} className="ba-chip ba-chip--after">
+                  <Check className="h-3.5 w-3.5" aria-hidden />
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
         <Link to="/clients" className="hyper-button mt-10">
           See Results <ArrowRight className="h-4 w-4" />
         </Link>
       </SectionFrame>
 
-      <SectionFrame eyebrow="Results" title="Small signals. Bigger systems behind them." contentClassName="mt-12">
-        <div className="mosaic-grid mosaic-grid--results">
-          {smallMetrics.map((metric) => (
-            <div key={metric.label} className="hyper-panel mosaic-card p-6" data-slot="growth-metric" data-slot-id={`homepage-${metric.label.toLowerCase().replace(/\s+/g, "-")}`}>
-              <RevealText as="p" mode="text" className="hyper-eyebrow">
-                {metric.label}
-              </RevealText>
-              <RevealText as="p" mode="heading" className="mt-4 text-4xl font-black">
-                {metric.value}
-              </RevealText>
-            </div>
-          ))}
-        </div>
+      <SectionFrame eyebrow="Results" title="Small Signals, Bigger Systems Behind Them" contentClassName="mt-12">
+        <MetricFlow />
       </SectionFrame>
 
-      <SectionFrame eyebrow="Get Started" title="Ready to build a sharper brand system?">
+      <SectionFrame eyebrow="Get Started" title="Ready To Build A Sharper Brand System?">
         <RevealText as="p" mode="paragraph" className="mt-6 max-w-2xl text-lg leading-relaxed text-[hsl(266_35%_24%)]/72">
           Start with a conversation, a rate card, or a custom quote.
         </RevealText>

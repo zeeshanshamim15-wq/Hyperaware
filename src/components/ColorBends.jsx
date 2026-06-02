@@ -210,6 +210,19 @@ export default function ColorBends({
       window.addEventListener('resize', handleResize);
     }
     let lastRender = 0;
+    let isScrolling = false;
+    let scrollTimeout = null;
+
+    const handleScroll = () => {
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     const renderFrame = () => {
       const dt = clock.getDelta();
       const elapsed = clock.elapsedTime;
@@ -231,6 +244,10 @@ export default function ColorBends({
         rafRef.current = requestAnimationFrame(loop);
         return;
       }
+      if (isScrolling) {
+        rafRef.current = requestAnimationFrame(loop);
+        return;
+      }
       const interval = qualityRef.current.frameInterval;
       if (now - lastRender >= interval) {
         lastRender = now;
@@ -242,6 +259,8 @@ export default function ColorBends({
     if (!staticMode) rafRef.current = requestAnimationFrame(loop);
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
       if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
       else window.removeEventListener('resize', handleResize);
       geometry.dispose();

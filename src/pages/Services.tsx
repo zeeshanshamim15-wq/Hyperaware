@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { BarChart3, Camera, Palette, Rocket, Route, Search, Scissors } from "lucide-react";
+import ProcessFlow from "@/components/ProcessFlow";
 import SectionFrame from "@/components/SectionFrame";
 import ServiceOrbit from "@/components/ServiceOrbit";
-import { faqItems, processSteps } from "@/content/hyperaware";
-
-const processIcons = [Search, Route, Palette, Camera, Scissors, Rocket, BarChart3];
+import { faqItems } from "@/content/hyperaware";
 
 const Services = () => {
   return (
@@ -17,25 +15,8 @@ const Services = () => {
         <ServiceOrbit />
       </SectionFrame>
 
-      <SectionFrame eyebrow="Process" title="How the service system moves from idea to scale." contentClassName="mt-12">
-        <div className="mobile-rail grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step, index) => (
-            <div key={step} className="hyper-panel p-6">
-              <span className="hyper-icon mb-5">
-                {(() => {
-                  const Icon = processIcons[index] ?? Search;
-                  return <Icon className="h-5 w-5" />;
-                })()}
-              </span>
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-[hsl(266_45%_25%)]/55">
-                {`Step ${index + 1}`}
-              </p>
-              <h2 className="mt-4 text-2xl font-semibold">
-                {step}
-              </h2>
-            </div>
-          ))}
-        </div>
+      <SectionFrame eyebrow="Process" title="How The Service System Moves From Idea To Scale" contentClassName="mt-12">
+        <ProcessFlow />
       </SectionFrame>
 
       <SectionFrame eyebrow="FAQ" title="Service questions brands ask before starting." contentClassName="mt-12">

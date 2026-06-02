@@ -6,6 +6,7 @@ import {
 import {
   Fragment,
   useMemo,
+  useState,
   type ComponentType,
   type ElementType,
 } from "react";
@@ -98,6 +99,7 @@ const RevealText = ({
   amount = 0.3,
   repeat = false,
 }: RevealTextProps) => {
+  const [animationCompleted, setAnimationCompleted] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const liteMotion = shouldUseLiteMotion();
   const preset = PRESETS[mode];
@@ -127,7 +129,7 @@ const RevealText = ({
   // Reduced motion (or empty) → render the text statically, styles preserved.
   if (shouldRenderStatic) {
     return (
-      <Tag className={className}>
+      <Tag className={cn(className, "reveal-completed")}>
         {words.map((item, index) => (
           <Fragment key={`${item.word}-${index}`}>
             <span className={item.className}>{item.word}</span>
@@ -154,12 +156,22 @@ const RevealText = ({
 
   return (
     <MotionTag
-      className={className}
+      className={cn(className, animationCompleted && "reveal-completed")}
       aria-label={fullText}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: !repeat, amount }}
       transition={{ staggerChildren: effectiveStagger, delayChildren: delay }}
+      onAnimationComplete={(definition) => {
+        if (definition === "visible") {
+          setAnimationCompleted(true);
+        }
+      }}
+      onAnimationStart={(definition) => {
+        if (definition === "visible") {
+          setAnimationCompleted(false);
+        }
+      }}
     >
       {words.map((item, index) => (
         <Fragment key={`${item.word}-${index}`}>
