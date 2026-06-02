@@ -40,8 +40,8 @@ export const Navbar = () => {
         <nav
           aria-label="Primary"
           className={cn(
-            "mars-nav-shell mt-4 flex items-center justify-between md:justify-center rounded-full border relative w-full",
-            scrolled ? "px-4 py-2.5 md:px-7 md:py-3" : "px-4 py-3 md:px-7 md:py-4",
+            "mars-nav-shell mt-4 flex items-center justify-between md:justify-center rounded-full border relative w-full md:w-fit md:mx-auto",
+            scrolled ? "px-4 py-2.5 md:px-14 md:py-3" : "px-4 py-3 md:px-14 md:py-4",
           )}
         >
           {/* Mobile Left WhatsApp Icon */}
