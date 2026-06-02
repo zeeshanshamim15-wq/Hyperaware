@@ -267,19 +267,13 @@
   }
 
   .mars-nav-shell {
-    background:
-      linear-gradient(135deg, hsl(0 0% 100% / 0.48), hsl(270 100% 99% / 0.22) 48%, hsl(188 100% 88% / 0.16)),
-      hsl(0 0% 100% / 0.24);
-    -webkit-backdrop-filter: saturate(190%) blur(24px);
-    backdrop-filter: saturate(190%) blur(24px);
-    border-color: hsl(var(--nav-border) / 0.18);
-    box-shadow:
-      0 1px 0 hsl(0 0% 100% / 0.74) inset,
-      0 0 0 1px hsl(266 80% 42% / 0.04) inset,
-      0 18px 55px -38px hsl(266 75% 20% / 0.5),
-      0 0 44px -26px hsl(188 100% 62% / 0.26);
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: transparent;
+    box-shadow: none;
     transition:
-      background-color 0.45s ease-in-out,
+      background 0.45s ease-in-out,
       backdrop-filter 0.45s ease-in-out,
       -webkit-backdrop-filter 0.45s ease-in-out,
       border-color 0.45s ease-in-out,
@@ -1949,7 +1943,14 @@
       padding-inline: 1rem;
     }
 
-    .mars-nav-shell,
+    .mars-nav-shell {
+      background: transparent !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
     .mars-nav--scrolled .mars-nav-shell {
       background:
         linear-gradient(135deg, hsl(0 0% 100% / 0.62), hsl(270 100% 99% / 0.42) 52%, hsl(188 100% 90% / 0.32)),
