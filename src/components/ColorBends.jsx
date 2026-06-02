@@ -172,11 +172,20 @@ export default function ColorBends({
     materialRef.current = material;
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
-    const renderer = new THREE.WebGLRenderer({
-      antialias: false,
-      powerPreference: 'high-performance',
-      alpha: true
-    });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: false,
+        powerPreference: 'high-performance',
+        alpha: true
+      });
+    } catch (err) {
+      // WebGL unavailable (older GPU/driver). Bail out silently — the
+      // static CSS fallback in PageShell stays visible.
+      geometry.dispose();
+      material.dispose();
+      return;
+    }
     rendererRef.current = renderer;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lite ? 0.9 : 1.15));

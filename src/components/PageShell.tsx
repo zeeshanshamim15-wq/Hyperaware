@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
-import { shouldUseLiteMotion } from "@/lib/performance";
 
 const ColorBends = lazy(() => import("@/components/ColorBends"));
 
@@ -10,12 +9,19 @@ type PageShellProps = {
 };
 
 const PageShell = ({ children }: PageShellProps) => {
-  // Defer mounting the heavy WebGL background until after first paint and
-  // skip it entirely on lite-motion (low-end, save-data, reduced-motion).
+  // Defer mounting the heavy WebGL background until after first paint.
+  // We still mount it on reduced-motion / low-end devices because
+  // ColorBends has an internal static / throttled mode; only true
+  // save-data or constrained networks skip it.
   const [showBends, setShowBends] = useState(false);
 
   useEffect(() => {
-    if (shouldUseLiteMotion()) return;
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    };
+    const saveData = nav.connection?.saveData === true;
+    const slowNetwork = ["slow-2g", "2g"].includes(nav.connection?.effectiveType ?? "");
+    if (saveData || slowNetwork) return;
 
     const idle =
       (window as Window & {
@@ -38,8 +44,13 @@ const PageShell = ({ children }: PageShellProps) => {
         aria-hidden
         className="fixed inset-0 z-0 bg-white"
         style={{
-          backgroundImage:
-            "radial-gradient(1200px 600px at 50% -10%, hsl(270 100% 99%) 0%, hsl(0 0% 100%) 58%, hsl(270 70% 98%) 100%)",
+          backgroundImage: [
+            "radial-gradient(900px 600px at 12% 8%, hsl(338 100% 78% / 0.55), transparent 65%)",
+            "radial-gradient(1000px 720px at 88% 22%, hsl(260 100% 78% / 0.55), transparent 68%)",
+            "radial-gradient(1100px 780px at 50% 110%, hsl(174 100% 70% / 0.5), transparent 65%)",
+            "radial-gradient(1200px 600px at 50% -10%, hsl(270 100% 99%) 0%, hsl(0 0% 100% / 0) 60%)",
+            "linear-gradient(180deg, hsl(0 0% 100%), hsl(270 60% 99%))",
+          ].join(", "),
         }}
       />
       {showBends ? (
