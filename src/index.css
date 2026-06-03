@@ -553,6 +553,9 @@
       0 18px 55px -44px hsl(266 70% 18% / 0.55),
       0 0 0 1px hsl(0 0% 100% / 0.35) inset;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 16rem;
+    contain: layout style;
   }
 
   .hyper-panel:hover {
@@ -861,6 +864,9 @@
     backdrop-filter: saturate(145%) blur(12px);
     box-shadow: 0 18px 50px -44px hsl(266 70% 18% / 0.55);
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 11rem;
+    contain: layout style;
   }
 
   .hyper-logo-card:hover {
@@ -911,6 +917,9 @@
     font-weight: 900;
     box-shadow: 0 18px 50px -44px hsl(266 70% 18% / 0.55);
     transition: transform 0.25s ease, border-color 0.25s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 5rem;
+    contain: layout style;
   }
 
   .hyper-mini-card:hover {
@@ -3005,7 +3014,12 @@
     box-shadow:
       0 1px 0 hsl(0 0% 100% / 0.78) inset,
       0 18px 50px -38px hsl(266 70% 20% / 0.42);
-    will-change: transform, box-shadow;
+    /* Skip paint/layout for cards offscreen — backdrop-filter is the most
+       expensive op here (re-blurs every frame the bg animates). Pairing
+       content-visibility with contain localizes the work to visible cards. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 22rem;
+    contain: layout style;
     transform: translateZ(0);
     backface-visibility: hidden;
     transition:
@@ -3164,6 +3178,9 @@
     border: 1px solid hsl(266 65% 25% / 0.14);
     aspect-ratio: 16 / 10;
     box-shadow: 0 22px 60px -38px hsl(266 70% 20% / 0.45);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 22rem;
+    contain: layout style;
   }
 
   .team-bts img {
